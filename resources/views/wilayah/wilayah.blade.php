@@ -18,7 +18,10 @@
                         <tr>
                             <th scope="col">Nama Wilayah</th>
                             <th scope="col">Kode Wilayah</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" colspan="2">
+                                <center>Action</center>
+                            </th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,7 +29,12 @@
                             <tr>
                                 <td>{{ $w['nama'] }}</td>
                                 <td>{{ $w['kode'] }}</td>
-                                <td>         |         </td>
+                                <td class="text-center">
+                                    <form action="wilayah/hapus/{{ $w['id'] }}" method="get">
+                                        @csrf
+                                        <button class="badge bg-danger border-0 text-white" onclick="return confirm('Are You Sure?')" > Hapus</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
 

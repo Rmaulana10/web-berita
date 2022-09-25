@@ -7,17 +7,25 @@ use Illuminate\Http\Request;
 
 class WilayahController extends Controller
 {
-    public function wilayah(){
+    public function wilayah()
+    {
         $data['wilayah'] = Wilayah::all();
         $data['title'] = "Wilayah";
         return view('wilayah.wilayah')->with($data);
     }
+
     public function wilayahtambah(Request $req)
     {
         Wilayah::create([
             'nama' => $req->nama,
             'kode' => $req->kode,
         ]);
-        return Redirect('wilayah',200,);
+        return Redirect('wilayah');
+    }
+
+    public function hapus($id)
+    {
+        Wilayah::where('id', '=', $id)->delete();
+        return back();
     }
 }

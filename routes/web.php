@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', [App\Http\Controllers\MenuController::class, 'dashboard']);
     Route::get('wilayah', [App\Http\Controllers\WilayahController::class, 'wilayah']);
     Route::post('wilayah/tam', [App\Http\Controllers\WilayahController::class, 'wilayahtambah']);
+    Route::get('wilayah/hapus/{id}', [App\Http\Controllers\WilayahController::class, 'hapus']);
     Route::get('berita', [App\Http\Controllers\MenuController::class, 'berita']);
     Route::get('iklan', [App\Http\Controllers\MenuController::class, 'iklan']);
     Route::get('user', [App\Http\Controllers\MenuController::class, 'user']);
