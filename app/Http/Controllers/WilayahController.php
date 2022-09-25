@@ -18,6 +18,6 @@ class WilayahController extends Controller
             'nama' => $req->nama,
             'kode' => $req->kode,
         ]);
-        return Redirect('wilayah');
+        return Redirect('wilayah',200,);
     }
 }

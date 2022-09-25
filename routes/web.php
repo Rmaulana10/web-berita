@@ -26,7 +26,6 @@ Route::get('logout', [App\Http\Controllers\LoginController::class, 'logout']);
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', [App\Http\Controllers\MenuController::class, 'dashboard']);
     Route::get('wilayah', [App\Http\Controllers\WilayahController::class, 'wilayah']);
-    Route::get('tambah', function () { return view('wilayah.create'); });
     Route::post('wilayah/tam', [App\Http\Controllers\WilayahController::class, 'wilayahtambah']);
     Route::get('berita', [App\Http\Controllers\MenuController::class, 'berita']);
     Route::get('iklan', [App\Http\Controllers\MenuController::class, 'iklan']);

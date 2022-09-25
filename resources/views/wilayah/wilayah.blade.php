@@ -7,7 +7,7 @@
 @section('konten')
     <div class="col-md-11 mt-5">
         <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
                 Tambah
             </button>
         </div>
@@ -16,18 +16,19 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Nama Kategori</th>
-                            <th scope="col">Slug</th>
+                            <th scope="col">Nama Wilayah</th>
+                            <th scope="col">Kode Wilayah</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-
-                        <tr>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>mdo</td>
-                        </tr>
+                        @foreach ($wilayah as $w)
+                            <tr>
+                                <td>{{ $w['nama'] }}</td>
+                                <td>{{ $w['kode'] }}</td>
+                                <td>         |         </td>
+                            </tr>
+                        @endforeach
 
                     </tbody>
                 </table>
@@ -35,29 +36,36 @@
         </div>
     </div>
 
-    {{-- modal creat --}}
-    <div class="modal" id="createModal" tabindex="-1">
+    <!-- Create Modal -->
+    <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Tambah Wilayah</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="createModalLabel">Tambahkan Wilayah</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Nama Wilayah</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tasikmalaya">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Kode Wilayah</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="32.2">
-                    </div>
+                    <form method="post" action="wilayah/tam">
+                        @csrf
+                        <div class="form-group">
+                            <label for="nama">Nama Wilayah</label>
+                            <input type="text" class="form-control" id="nama" name="nama"
+                                placeholder="Nama Wilayah">
+                        </div>
+                        <div class="form-group">
+                            <label for="kode">Kode Wilayah</label>
+                            <input type="text" class="form-control" id="kode" name="kode"
+                                placeholder="Isikan Kode wilayah">
+                        </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
+    </form>
 @endsection

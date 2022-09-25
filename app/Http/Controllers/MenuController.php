@@ -8,9 +8,9 @@ class MenuController extends Controller
 {
     public function dashboard()
     {
-        return view('menu.dashboard',[
-        "title" => "Admin"
-    ]);
+        return view('dashboard', [
+            "title" => "Admin"
+        ]);
     }
     public function wilayah()
     {
